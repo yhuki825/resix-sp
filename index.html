@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReSix | Curating The Next Standard.</title>
+  <meta name="description" content="無店舗小売の機動力を活かし、世界中の優れたプロダクトを日本の日常へ。ReSixは、価値あるモノを再発見し、新しい流通を創造します。" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* ===== カスタムアニメーション ===== */
+    @keyframes blob {
+      0%   { transform: translate(0px, 0px) scale(1); }
+      33%  { transform: translate(30px, -50px) scale(1.1); }
+      66%  { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+    /* ===== スクロールインジケーター ===== */
+    @keyframes bounce-scroll {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+    .scroll-dot {
+      animation: bounce-scroll 1.5s ease-in-out infinite;
+    }
+
+    /* ===== スムーズスクロール ===== */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ===== テキスト選択カラー ===== */
+    ::selection {
+      background-color: #e0e7ff;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-white text-slate-900 font-sans">
+
+  <!-- ========================================
+       ナビゲーション
+  ======================================== -->
+  <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-6">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+
+      <!-- ロゴ -->
+      <a href="#" class="flex items-center space-x-2">
+        <div class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-xl">R6</span>
+        </div>
+        <span class="text-2xl font-black tracking-tighter uppercase italic">ReSix</span>
+      </a>
+
+      <!-- デスクトップナビ -->
+      <div class="hidden md:flex space-x-8 items-center">
+        <a href="#mission"  class="text-sm font-medium hover:text-indigo-600 transition-colors">Mission</a>
+        <a href="#business" class="text-sm font-medium hover:text-indigo-600 transition-colors">Business</a>
+        <a href="#curation" class="text-sm font-medium hover:text-indigo-600 transition-colors">Curation</a>
+        <a href="#about"    class="text-sm font-medium hover:text-indigo-600 transition-colors">About</a>
+        <a href="#" class="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-slate-700 transition-colors">
+          Store Access
+        </a>
+      </div>
+
+      <!-- モバイルメニューボタン -->
+      <button id="menu-btn" class="md:hidden" aria-label="メニューを開く">
+        <i data-lucide="menu" class="w-7 h-7"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================
+       モバイルメニューオーバーレイ
+  ======================================== -->
+  <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 text-2xl font-bold">
+    <a href="#mission"  class="hover:text-indigo-600 transition-colors" onclick="closeMobileMenu()">Mission</a>
+    <a href="#business" class="hover:text-indigo-600 transition-colors" onclick="closeMobileMenu()">Business</a>
+    <a href="#curation" class="hover:text-indigo-600 transition-colors" onclick="closeMobileMenu()">Curation</a>
+    <a href="#about"    class="hover:text-indigo-600 transition-colors" onclick="closeMobileMenu()">About</a>
+    <button
+      class="bg-slate-900 text-white px-8 py-3 rounded-full text-base font-semibold hover:bg-slate-700 transition-colors"
+      onclick="closeMobileMenu()"
+    >
+      Store Access
+    </button>
+    <button id="menu-close" class="absolute top-6 right-6" aria-label="メニューを閉じる">
+      <i data-lucide="x" class="w-7 h-7"></i>
+    </button>
+  </div>
+
+  <!-- ========================================
+       ヒーローセクション
+  ======================================== -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden bg-slate-50">
+
+    <!-- 背景 -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=1920"
+        alt="Hero Background"
+        class="w-full h-full object-cover opacity-20"
+      />
+      <div class="absolute top-1/4 -left-20 w-96 h-96 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+      <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-pink-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+    </div>
+
+    <!-- コンテンツ -->
+    <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+      <h1 class="text-5xl md:text-8xl font-black tracking-tight mb-8 leading-tight">
+        Curating The
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-slate-900">
+          Next Standard.
+        </span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+        無店舗小売の機動力を活かし、世界中の優れたプロダクトを日本の日常へ。<br />
+        ReSixは、価値あるモノを再発見し、新しい流通を創造します。
+      </p>
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+        <a
+          href="#business"
+          class="w-full md:w-auto px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:-translate-y-0.5 transition-all shadow-xl shadow-slate-200"
+        >
+          事業内容を見る
+        </a>
+        <a
+          href="#curation"
+          class="w-full md:w-auto px-8 py-4 bg-white border border-slate-200 text-slate-900 rounded-xl font-bold hover:bg-slate-50 transition-all"
+        >
+          取扱製品ラインナップ
+        </a>
+      </div>
+    </div>
+
+    <!-- スクロールインジケーター -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
+      <div class="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center pt-2">
+        <div class="w-1 h-2 bg-slate-400 rounded-full scroll-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       ミッションセクション
+  ======================================== -->
+  <section id="mission" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+
+        <!-- テキスト -->
+        <div>
+          <span class="text-indigo-600 font-bold tracking-widest uppercase text-sm">Our Mission</span>
+          <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-8 leading-tight">
+            実店舗を持たないからこそ、<br />
+            真に届けるべき価値に向き合える。
+          </h2>
+          <p class="text-slate-600 leading-relaxed mb-6">
+            ReSix（リシックス）という屋号には、五感を超えた「第六感（Intuition）」に響くアイテムを
+            提供したいという想いを込めています。
+          </p>
+          <p class="text-slate-600 leading-relaxed">
+            固定概念にとらわれない柔軟な仕入れと、最先端のECプラットフォーム活用により、
+            場所や時間の制約を超えた「出会い」をプロデュースします。
+          </p>
+        </div>
+
+        <!-- ビジュアルグリッド -->
+        <div class="grid grid-cols-2 gap-4">
+          <!-- 左列 -->
+          <div class="space-y-4">
+            <div class="aspect-[4/5] bg-slate-100 rounded-3xl flex items-end p-6 group overflow-hidden relative">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bbbda5366391?auto=format&fit=crop&q=80&w=600"
+                alt="Speed Value"
+                class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700"
+              />
+              <div class="z-10 text-slate-800 transition-transform group-hover:-translate-y-1 duration-500">
+                <p class="text-xs font-bold uppercase tracking-tighter opacity-50">Value 01</p>
+                <p class="text-xl font-bold leading-none">Speed</p>
+              </div>
+            </div>
+            <div class="aspect-square bg-slate-900 rounded-3xl flex items-center justify-center p-6 relative overflow-hidden group">
+              <img
+                src="https://images.unsplash.com/photo-1581447100595-3a81f33334b0?auto=format&fit=crop&q=80&w=600"
+                alt="Logistics"
+                class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700"
+              />
+              <i data-lucide="package" class="text-white w-12 h-12 relative z-10"></i>
+            </div>
+          </div>
+
+          <!-- 右列（上にオフセット） -->
+          <div class="space-y-4 mt-8">
+            <div class="aspect-square bg-indigo-600 rounded-3xl flex items-center justify-center p-6 relative overflow-hidden group">
+              <img
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=600"
+                alt="Global"
+                class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-700"
+              />
+              <i data-lucide="globe" class="text-white w-12 h-12 relative z-10"></i>
+            </div>
+            <div class="aspect-[4/5] bg-slate-100 rounded-3xl flex items-end p-6 group overflow-hidden relative">
+              <img
+                src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=600"
+                alt="Quality Value"
+                class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-700"
+              />
+              <div class="z-10 text-slate-800 transition-transform group-hover:-translate-y-1 duration-500">
+                <p class="text-xs font-bold uppercase tracking-tighter opacity-50">Value 02</p>
+                <p class="text-xl font-bold leading-none">Quality</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       ビジネスモデルセクション
+  ======================================== -->
+  <section id="business" class="py-24 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <!-- 見出し -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold">Business Model</h2>
+        <div class="w-16 h-1 bg-indigo-600 mx-auto mt-4"></div>
+      </div>
+
+      <!-- カード -->
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <!-- カード 1 -->
+        <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100">
+          <div class="mb-6">
+            <i data-lucide="shopping-bag" class="w-8 h-8 text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">ECマーケットプレイス運営</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">
+            国内主要ECモール（Amazon・楽天・Yahoo等）にて、厳選したライフスタイル雑貨を展開。
+            緻密な市場分析に基づいた販売戦略を構築しています。
+          </p>
+        </div>
+
+        <!-- カード 2 -->
+        <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100">
+          <div class="mb-6">
+            <i data-lucide="globe" class="w-8 h-8 text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">グローバル・ソーシング</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">
+            国内外のメーカーや卸売業者と直接提携。中間コストを極限まで排除し、
+            高品質なプロダクトを適正価格で市場へ供給しています。
+          </p>
+        </div>
+
+        <!-- カード 3 -->
+        <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all border border-slate-100">
+          <div class="mb-6">
+            <i data-lucide="check-circle" class="w-8 h-8 text-indigo-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">ブランドディレクション</h3>
+          <p class="text-slate-600 leading-relaxed text-sm">
+            単なる転売ではなく、商品が持つストーリーを再構築。商品撮影からリスティングの
+            コピーライティングまで、価値を最大化する演出を行います。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       キュレーション（取扱製品）セクション
+  ======================================== -->
+  <section id="curation" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <!-- ヘッダー -->
+      <div class="flex justify-between items-end mb-12">
+        <div>
+          <h2 class="text-4xl font-bold">Featured Curation</h2>
+          <p class="text-slate-500 mt-2">現在注力しているカテゴリー</p>
+        </div>
+        <div class="hidden md:flex space-x-2">
+          <button class="p-3 border border-slate-200 rounded-full hover:bg-slate-50 transition-colors" aria-label="前へ">
+            <i data-lucide="arrow-right" class="rotate-180 w-5 h-5"></i>
+          </button>
+          <button class="p-3 border border-slate-200 rounded-full hover:bg-slate-50 transition-colors" aria-label="次へ">
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- カテゴリーグリッド -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+
+        <!-- Kitchen & Dining -->
+        <div class="group cursor-pointer">
+          <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden mb-4 relative shadow-inner">
+            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors duration-500 z-10"></div>
+            <img
+              src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=600"
+              alt="Kitchen & Dining"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <p class="text-xs text-indigo-600 font-bold mb-1 uppercase tracking-widest">Design</p>
+          <h4 class="font-bold text-lg group-hover:text-indigo-600 transition-colors">Kitchen &amp; Dining</h4>
+        </div>
+
+        <!-- Outdoor Gear -->
+        <div class="group cursor-pointer">
+          <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden mb-4 relative shadow-inner">
+            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors duration-500 z-10"></div>
+            <img
+              src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=600"
+              alt="Outdoor Gear"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <p class="text-xs text-indigo-600 font-bold mb-1 uppercase tracking-widest">Functional</p>
+          <h4 class="font-bold text-lg group-hover:text-indigo-600 transition-colors">Outdoor Gear</h4>
+        </div>
+
+        <!-- Smart Gadgets（画像を差し替え） -->
+        <div class="group cursor-pointer">
+          <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden mb-4 relative shadow-inner">
+            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors duration-500 z-10"></div>
+            <img
+              src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&q=80&w=600"
+              alt="Smart Gadgets"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <p class="text-xs text-indigo-600 font-bold mb-1 uppercase tracking-widest">Tech</p>
+          <h4 class="font-bold text-lg group-hover:text-indigo-600 transition-colors">Smart Gadgets</h4>
+        </div>
+
+        <!-- Work Style -->
+        <div class="group cursor-pointer">
+          <div class="aspect-square bg-slate-100 rounded-2xl overflow-hidden mb-4 relative shadow-inner">
+            <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors duration-500 z-10"></div>
+            <img
+              src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=600"
+              alt="Work Style"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          </div>
+          <p class="text-xs text-indigo-600 font-bold mb-1 uppercase tracking-widest">Minimal</p>
+          <h4 class="font-bold text-lg group-hover:text-indigo-600 transition-colors">Work Style</h4>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       代表者プロフィールセクション
+  ======================================== -->
+  <section id="about" class="py-32 bg-slate-900 text-white overflow-hidden relative">
+    <!-- 背景装飾 -->
+    <div class="absolute top-0 right-0 w-1/3 h-full bg-indigo-600/5 -skew-x-12 translate-x-1/2 pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="text-center space-y-8">
+
+        <!-- ラベル -->
+        <div class="inline-block p-1 border-b-2 border-indigo-500">
+          <span class="text-indigo-400 font-bold tracking-[0.2em] uppercase text-xs">Representative Profile</span>
+        </div>
+
+        <!-- 名前 -->
+        <h2 class="text-5xl font-black tracking-tight">
+          菅原 健大
+          <span class="block text-xl font-light mt-2 text-slate-400 tracking-widest uppercase">Kenta Sugawara</span>
+        </h2>
+
+        <!-- 本文 -->
+        <div class="space-y-6 text-slate-300 leading-relaxed text-lg max-w-2xl mx-auto">
+          <p>
+            大手EC物流企業およびデジタルマーケティング領域での経験を経て「ReSix」を創業。
+          </p>
+          <p>
+            デジタルネイティブな感性と確かなデータ分析を融合させ、小規模事業者ながら独自の流通網を構築。
+            単なる「モノの販売」に留まらず、ユーザーの生活の質（QOL）を向上させる提案型小売を追求しています。
+          </p>
+        </div>
+
+        <!-- 会社情報テーブル -->
+        <div class="pt-12 border-t border-slate-800 text-left max-w-2xl mx-auto">
+          <div class="grid grid-cols-1 gap-6 text-sm">
+            <div class="flex border-b border-slate-800/50 pb-4">
+              <span class="w-32 text-indigo-400 font-bold uppercase tracking-tighter shrink-0">屋号</span>
+              <span class="font-medium text-slate-200">ReSix（リシックス）</span>
+            </div>
+            <div class="flex border-b border-slate-800/50 pb-4">
+              <span class="w-32 text-indigo-400 font-bold uppercase tracking-tighter shrink-0">拠点</span>
+              <span class="font-medium text-slate-200">東京都（無店舗・EC拠点型）</span>
+            </div>
+            <div class="flex">
+              <span class="w-32 text-indigo-400 font-bold uppercase tracking-tighter shrink-0">事業内容</span>
+              <span class="font-medium text-slate-200 leading-relaxed">
+                無店舗小売業、EC運営代行、商品調達コンサルティング
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       フッター
+  ======================================== -->
+  <footer class="py-12 bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+
+      <!-- ロゴ -->
+      <a href="#" class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-slate-900 rounded flex items-center justify-center">
+          <span class="text-white font-bold text-sm">R6</span>
+        </div>
+        <span class="text-xl font-black tracking-tighter uppercase italic">ReSix</span>
+      </a>
+
+      <!-- リンク -->
+      <div class="flex flex-col items-center md:items-end space-y-2">
+        <p class="text-sm text-slate-500">© 2024 ReSix. All rights reserved.</p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-xs text-slate-400 hover:text-indigo-600 underline transition-colors">Privacy Policy</a>
+          <a href="#" class="text-xs text-slate-400 hover:text-indigo-600 underline transition-colors flex items-center space-x-1">
+            <span>Direct Store</span>
+            <i data-lucide="external-link" class="w-3 h-3"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================
+       JavaScript
+  ======================================== -->
+  <script>
+    // Lucide アイコンの初期化
+    lucide.createIcons();
+
+    // ===== ナビゲーション スクロール効果 =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.remove('bg-transparent', 'py-6');
+        navbar.classList.add('bg-white/80', 'backdrop-blur-md', 'py-4', 'shadow-sm');
+      } else {
+        navbar.classList.remove('bg-white/80', 'backdrop-blur-md', 'py-4', 'shadow-sm');
+        navbar.classList.add('bg-transparent', 'py-6');
+      }
+    });
+
+    // ===== モバイルメニュー =====
+    const menuBtn   = document.getElementById('menu-btn');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function openMobileMenu() {
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', openMobileMenu);
+    menuClose.addEventListener('click', closeMobileMenu);
+  </script>
+
+</body>
+</html>
